@@ -1,0 +1,43 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.server = exports.app = void 0;
+const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
+const http_1 = __importDefault(require("http"));
+const dotenv_1 = __importDefault(require("dotenv"));
+const logger_1 = require("./middleware/logger");
+const rateLimit_1 = require("./middleware/rateLimit");
+const websocket_1 = require("./services/websocket");
+const auth_1 = __importDefault(require("./routes/auth"));
+const channels_1 = __importDefault(require("./routes/channels"));
+const messages_1 = __importDefault(require("./routes/messages"));
+const voicemail_1 = __importDefault(require("./routes/voicemail"));
+const calls_1 = __importDefault(require("./routes/calls"));
+const init_1 = __importDefault(require("./routes/init"));
+dotenv_1.default.config();
+const app = (0, express_1.default)();
+exports.app = app;
+const server = http_1.default.createServer(app);
+exports.server = server;
+const PORT = process.env.PORT || 3001;
+app.use((0, cors_1.default)());
+app.use(express_1.default.json());
+app.use(logger_1.logger);
+app.use('/api', rateLimit_1.apiLimiter);
+app.use('/api/auth', auth_1.default);
+app.use('/api/channels', channels_1.default);
+app.use('/api/messages', messages_1.default);
+app.use('/api/voicemail', voicemail_1.default);
+app.use('/api/calls', calls_1.default);
+app.use('/api/init', init_1.default);
+app.get('/health', (req, res) => {
+    res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+(0, websocket_1.setupWebSocket)(server);
+server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+    console.log(`WebSocket server running on ws://localhost:${PORT}/ws`);
+});

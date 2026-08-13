@@ -1,0 +1,95 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  password  String
+  status    String   @default("offline")
+  lastSeen  DateTime?
+  createdAt DateTime @default(now())
+  
+  messages       Message[]
+  channelMembers ChannelMember[]
+  voicemails     Voicemail[]
+  callsAsCaller  Call[] @relation("Caller")
+  callsAsCallee  Call[] @relation("Callee")
+}
+
+model Channel {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  isPrivate   Boolean  @default(false)
+  createdBy   String
+  createdAt   DateTime @default(now())
+  
+  members  ChannelMember[]
+  messages Message[]
+  calls    Call[]
+  voicemails Voicemail[]
+}
+
+model ChannelMember {
+  id        String   @id @default(uuid())
+  channelId String
+  userId    String
+  role      String   @default("member")
+  joinedAt  DateTime @default(now())
+  
+  channel Channel @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([channelId, userId])
+}
+
+model Message {
+  id          String   @id @default(uuid())
+  channelId   String
+  userId      String
+  content     String
+  type        String   @default("text")
+  voicemailId String?
+  edited      Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  channel   Channel @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  voicemail Voicemail? @relation(fields: [voicemailId], references: [id], onDelete: SetNull)
+}
+
+model Voicemail {
+  id        String   @id @default(uuid())
+  channelId String
+  userId    String
+  filename  String
+  duration  Int
+  mimeType  String
+  createdAt DateTime @default(now())
+  
+  channel  Channel  @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages Message[]
+}
+
+model Call {
+  id        String   @id @default(uuid())
+  channelId String
+  callerId  String
+  calleeId  String
+  type      String
+  status    String   @default("initiated")
+  startedAt DateTime @default(now())
+  endedAt   DateTime?
+  
+  channel Channel @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  caller  User    @relation("Caller", fields: [callerId], references: [id], onDelete: Cascade)
+  callee  User    @relation("Callee", fields: [calleeId], references: [id], onDelete: Cascade)
+}

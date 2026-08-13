@@ -1,0 +1,101 @@
+.voicemail-recorder {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background: #16213e;
+  border-radius: 8px;
+}
+
+.recorder-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: #0f3460;
+  border-radius: 4px;
+}
+
+.recording-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  color: #eee;
+}
+
+.pulse {
+  color: #e94560;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.duration {
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.recorder-controls {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.recorder-controls button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.record-button {
+  background: #e94560;
+  color: white;
+}
+
+.record-button:hover {
+  background: #d63d56;
+}
+
+.pause-button {
+  background: #f39c12;
+  color: white;
+}
+
+.pause-button:hover {
+  background: #e67e22;
+}
+
+.resume-button {
+  background: #27ae60;
+  color: white;
+}
+
+.resume-button:hover {
+  background: #2ecc71;
+}
+
+.stop-button {
+  background: #e94560;
+  color: white;
+}
+
+.stop-button:hover {
+  background: #d63d56;
+}
+
+.cancel-button {
+  background: #7f8c8d;
+  color: white;
+}
+
+.cancel-button:hover {
+  background: #95a5a6;
+}

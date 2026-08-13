@@ -1,0 +1,252 @@
+.settings-page {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  background: #1a1a2e;
+  min-height: 100vh;
+}
+
+.settings-container {
+  width: 100%;
+  max-width: 800px;
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.settings-header h1 {
+  color: #eee;
+  margin: 0;
+  font-size: 2rem;
+}
+
+.back-button {
+  padding: 0.5rem 1rem;
+  background: #16213e;
+  color: #eee;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.back-button:hover {
+  background: #1a1a2e;
+}
+
+.settings-section {
+  background: #0f3460;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.settings-section h2 {
+  color: #eee;
+  margin: 0 0 1rem 0;
+  font-size: 1.3rem;
+}
+
+.account-info {
+  margin-bottom: 1.5rem;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #16213e;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-item label {
+  color: #888;
+  font-weight: 500;
+}
+
+.info-item span {
+  color: #eee;
+}
+
+.logout-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #e94560;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.logout-button:hover {
+  background: #d63d56;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.create-channel-button {
+  padding: 0.5rem 1rem;
+  background: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.create-channel-button:hover {
+  background: #2ecc71;
+}
+
+.create-channel-form {
+  background: #16213e;
+  padding: 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.create-channel-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.create-channel-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #eee;
+}
+
+.create-channel-form input[type="text"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #0f3460;
+  border-radius: 4px;
+  background: #1a1a2e;
+  color: #eee;
+  font-size: 1rem;
+}
+
+.create-channel-form input[type="text"]:focus {
+  outline: none;
+  border-color: #e94560;
+}
+
+.create-channel-form .checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.create-channel-form .checkbox input[type="checkbox"] {
+  width: auto;
+}
+
+.create-channel-form button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.create-channel-form button:hover:not(:disabled) {
+  background: #2ecc71;
+}
+
+.create-channel-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background: #e94560;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.channels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.channel-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #16213e;
+  border-radius: 4px;
+}
+
+.channel-info h3 {
+  color: #eee;
+  margin: 0 0 0.25rem 0;
+  font-size: 1.1rem;
+}
+
+.channel-info p {
+  color: #888;
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.channel-type {
+  font-size: 0.85rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.channel-type.public {
+  background: #27ae60;
+  color: white;
+}
+
+.channel-type.private {
+  background: #e94560;
+  color: white;
+}
+
+.leave-button {
+  padding: 0.5rem 1rem;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.leave-button:hover {
+  background: #c0392b;
+}
+
+.no-channels {
+  text-align: center;
+  color: #888;
+  padding: 2rem;
+}

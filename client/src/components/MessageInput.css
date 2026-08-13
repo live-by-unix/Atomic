@@ -1,0 +1,70 @@
+.message-input {
+  padding: 1rem;
+  background: #0f3460;
+  border-top: 1px solid #16213e;
+}
+
+.message-input form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.input-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+  align-items: center;
+}
+
+.input-wrapper textarea {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #16213e;
+  border-radius: 4px;
+  background: #1a1a2e;
+  color: #eee;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: none;
+  min-height: 44px;
+  max-height: 120px;
+}
+
+.input-wrapper textarea:focus {
+  outline: none;
+  border-color: #e94560;
+}
+
+.voicemail-button,
+.send-button {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.voicemail-button {
+  background: #16213e;
+  color: #eee;
+}
+
+.voicemail-button:hover {
+  background: #1a1a2e;
+}
+
+.send-button {
+  background: #e94560;
+  color: white;
+  font-weight: bold;
+}
+
+.send-button:hover:not(:disabled) {
+  background: #d63d56;
+}
+
+.send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
